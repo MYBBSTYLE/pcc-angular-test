@@ -1,0 +1,29 @@
+<div class="container my-5">
+  <div class="stepper-container mx-auto  col-12 col-md-6">
+    <div
+      class="stepper"
+      *ngFor="let step of steps; index as i"
+      [ngClass]="{
+        'stepper-last': i + 1 === steps.length,
+        'stepper-active': i === selectedStep
+      }"
+    >
+      <div class="stepper-text-container">
+        <div class="stepper-number">{{ i + 1 }}</div>
+        <div class="stepper-text">{{ step }}</div>
+      </div>
+      <div class="stepper-line" *ngIf="i + 1 != steps.length"><hr /></div>
+    </div>
+  </div>
+</div>
+
+<!-- <app-input-tax-filing *ngIf="selectedStep === 0" (detailTaxData)="getDetailTaxData($event)" ></app-input-tax-filing>
+
+
+<app-review-tax-filing  *ngIf="selectedStep === 1"[displayTaxData]="detailTaxData" ></app-review-tax-filing> -->
+<div class="container ">
+  <div class="row">
+  <app-input-tax-filing class="col-lg-6 mx-lg-auto" (detailTaxData)="getDetailTaxData($event)" [hidden]="selectedStep === 1"></app-input-tax-filing>
+  <app-review-tax-filing class="col-lg-6 mx-lg-auto" [displayTaxData]="detailTaxData" (backStep)="getBackStep($event)" [hidden]="selectedStep === 0"></app-review-tax-filing>
+</div>
+</div>

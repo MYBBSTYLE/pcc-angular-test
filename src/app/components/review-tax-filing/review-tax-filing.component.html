@@ -1,0 +1,41 @@
+<div class="container justify-content-center border">
+  <div class="m-4">
+    <h4 class="mb-3 mt-3">Tax Filing Detail</h4>
+    <h4 class="border-bottom"> </h4>
+    <div class="row">
+      <div class="col-3 h6">Type of Filing</div>
+      <div class="col">{{displayTaxData.filingType}}</div>
+    </div>
+    <div class="row">
+      <div class="col-3 h6">VAT Month</div>
+      <div class="col">{{displayTaxData.month}}</div>
+    </div>
+    <br />
+    <h4 class="mb-3 mt-3">Total Computation</h4>
+    <h4 class="border-bottom"> </h4>
+    <div class="row mt-4">
+      <div class="col-8 h6">Total value of taxable electronic service exclusive of VAT</div>
+      <div class="col text-end">{{displayTaxData.saleAmount}} THB</div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-8 ">
+        <h6>Total VAT to be remiited</h6>(7% of Total value of taxable electronic service exclusive of VAT)
+      </div>
+      <div class="col text-end">{{displayTaxData.taxAmount}} THB</div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-8 h6">Total Amount Payable</div>
+      <div class="col text-end">{{displayTaxData.totalAll}} THB</div>
+    </div>
+    <br />
+    <h4 class="mb-3 mt-3">Declaration</h4>
+    <h4 class="border-bottom"> </h4>
+    <p>I hereby certify that information given above are true and correct and agress to be bound by such information.
+    </p>
+  </div>
+</div>
+<br/>
+<div class="container justify-content-center text-center my-5 mx-auto w50">
+  <button type="button" class="btn btn-outline-primary" (click)="BackTo()">Back</button>
+  <button type="button" class="btn btn-outline-primary" (click)="ConfirmForm()">Confirm and Submit</button>
+</div>

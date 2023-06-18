@@ -1,0 +1,116 @@
+<div class="container  text-center mt-5 mb-5">
+  <h3>Submit Tax Filing</h3>
+</div>
+<div class="container container-sm justify-content-center border">
+  <div class="m-4">
+    <form [formGroup]="taxData" class="container">
+      <h4 class="mb-3 mt-3">1. Tax Filing Detail</h4>
+      <h4 class="border-bottom"> </h4>
+      <div class="mb-3">
+        <label class="form-label">Filing Type<span class="text-danger">*</span></label>
+        <br>
+        <div class="form-check form-check-inline" *ngFor="let item of optionFilingType">
+          <input class="form-check-input" type="radio" id="{{item.code}}" [value]="item.code" formControlName="filingType">
+          <label class="form-check-label" for="{{item.code}}">{{ item.name }}</label>
+        </div>
+      </div>
+      <div class="form-group row row-gap-3">
+        <label>Tax Month<span class="text-danger">*</span></label>
+        <div class="col-12 col-md-3">
+
+          <select class="form-select" aria-placeholder="Select Month" formControlName="month">
+            <option class="form-control" *ngFor="let item of selectMonth" [value]="item.code" [disabled]="item.disable"> {{ item.name }}</option>
+          </select>
+        </div>
+        <div class="col-12 col-md-3">
+          <select class="form-select" placeholder="Select Year" formControlName="year">
+            <option class="form-control" *ngFor="let item of selectYear" [value]="item"> {{ item }}</option>
+          </select>
+        </div>
+      </div>
+        <br/>
+      <h4 class="mb-3 mt-3">2. Tax Computation</h4>
+      <h4 class="border-bottom"> </h4>
+      <h6>Provide total taxable electronic service<span class="text-danger">*</span></h6>
+      <br />
+      <div class="row">
+        <div class="col">
+          <span>1. Underdeclared Thai taxable electronic service</span>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="input-group mb-3">
+            <input type="number" class="form-control text-end" aria-describedby="basic-addon2"
+              formControlName="saleAmount" (ngModelChange)="getSaleAmount('saleAmount',$event)"
+              (blur)="onBlurSaleAmount(taxData.controls.saleAmount.value)"
+              (focus)="onFocusSaleAmount(taxData.controls.saleAmount.value)">
+            <span class="input-group-text" id="basic-addon2">THB</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <span>2. Total VAT to be remitted (7% of 1.)</span>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="input-group mb-3">
+            <input type="number" class="form-control text-end" aria-describedby="basic-addon2"
+              formControlName="taxAmount" (ngModelChange)="getSaleAmount('taxAmount',$event)"
+              (blur)="onBlurTaxAmount(taxData.controls.taxAmount.value)"
+              (focus)="onFocusTaxAmount(taxData.controls.taxAmount.value)">
+            <span class="input-group-text" id="basic-addon2">THB</span>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div *ngIf="taxData.controls.filingType.value == '1'">
+      <h6>In case of late filling and payment, or additional filling</h6>
+      <br />
+      <div class="row">
+        <div class="col">
+          <span>3. Surcharge</span>
+        </div>
+        <div class="col-4">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control text-end" aria-describedby="basic-addon2" formControlName="surcharge"
+              readonly>
+            <span class="input-group-text" id="basic-addon2">THB</span>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col">
+          <span>4. Penalty</span>
+        </div>
+        <div class="col-4">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control text-end" aria-describedby="basic-addon2" formControlName="penalty"
+              readonly>
+            <span class="input-group-text" id="basic-addon2">THB</span>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col">
+          <span>5. Total amount of VAT, surcharge, and penalty to be remitted (2+3+4)</span>
+        </div>
+        <div class="col-4">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control text-end" aria-describedby="basic-addon2"
+              formControlName="totalAmount" readonly>
+            <span class="input-group-text" id="basic-addon2">THB</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
+<div class="container justify-content-center text-center my-5 mx-auto w50">
+  <button type="button" class="btn btn-outline-secondary" disabled>Back</button>
+  <button type="button" class="btn btn-outline-primary" (click)="submitForm()" type="submit"
+    [disabled]="taxData.invalid">Next</button>
+</div>
