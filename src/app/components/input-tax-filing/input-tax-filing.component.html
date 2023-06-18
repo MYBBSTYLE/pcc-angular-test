@@ -17,7 +17,6 @@
       <div class="form-group row row-gap-3">
         <label>Tax Month<span class="text-danger">*</span></label>
         <div class="col-12 col-md-3">
-
           <select class="form-select" aria-placeholder="Select Month" formControlName="month">
             <option class="form-control" *ngFor="let item of selectMonth" [value]="item.code" [disabled]="item.disable"> {{ item.name }}</option>
           </select>
@@ -46,9 +45,7 @@
             <span class="input-group-text" id="basic-addon2">THB</span>
           </div>
         </div>
-
       </div>
-
       <div class="row">
         <div class="col">
           <span>2. Total VAT to be remitted (7% of 1.)</span>
@@ -71,7 +68,7 @@
         <div class="col">
           <span>3. Surcharge</span>
         </div>
-        <div class="col-4">
+        <div class="col-12 col-md-4">
           <div class="input-group mb-3">
             <input type="text" class="form-control text-end" aria-describedby="basic-addon2" formControlName="surcharge"
               readonly>
@@ -79,12 +76,12 @@
           </div>
         </div>
       </div>
-      <br />
+
       <div class="row">
         <div class="col">
           <span>4. Penalty</span>
         </div>
-        <div class="col-4">
+        <div class="col-12 col-md-4">
           <div class="input-group mb-3">
             <input type="text" class="form-control text-end" aria-describedby="basic-addon2" formControlName="penalty"
               readonly>
@@ -92,12 +89,12 @@
           </div>
         </div>
       </div>
-      <br />
+
       <div class="row">
         <div class="col">
           <span>5. Total amount of VAT, surcharge, and penalty to be remitted (2+3+4)</span>
         </div>
-        <div class="col-4">
+        <div class="col-12 col-md-4">
           <div class="input-group mb-3">
             <input type="text" class="form-control text-end" aria-describedby="basic-addon2"
               formControlName="totalAmount" readonly>
@@ -109,8 +106,8 @@
     </form>
   </div>
 </div>
-<div class="container justify-content-center text-center my-5 mx-auto w50">
-  <button type="button" class="btn btn-outline-secondary" disabled>Back</button>
+<div class="container justify-content-center text-center my-5 mx-auto w50 ">
+  <button type="button" class="btn btn-outline-secondary mx-2" disabled>Back</button>
   <button type="button" class="btn btn-outline-primary" (click)="submitForm()" type="submit"
     [disabled]="taxData.invalid">Next</button>
 </div>

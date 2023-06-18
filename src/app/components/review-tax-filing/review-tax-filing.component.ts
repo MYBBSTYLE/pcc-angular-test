@@ -52,14 +52,10 @@ export class ReviewTaxFilingComponent implements OnInit {
         },
         0
       );
-
+      this.taxData.totalAll = reducedValue;
       this.displayTaxData.totalAll = this.setCommaString(reducedValue);
-      this.displayTaxData.filingType = this.taxFilingService.getFilingTypeName(
-        this.displayTaxData.filingType
-      );
-      this.displayTaxData.month = this.taxFilingService.getMonthName(
-        this.displayTaxData.month
-      );
+      this.displayTaxData.filingType = this.taxFilingService.getFilingTypeName(this.displayTaxData.filingType);
+      this.displayTaxData.month = this.taxFilingService.getMonthName(this.displayTaxData.month);
     }
   }
 
